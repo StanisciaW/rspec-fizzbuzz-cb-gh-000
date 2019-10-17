@@ -1,16 +1,12 @@
 # Don't forget! This file needs to be 'required' in its spec file
 # See README.md for instructions on how to do this
-fizzbuzz =
-  (1..100).map do |n|
-    case [n % 3, n % 5].map(&:zero?)
-    when [true, true]
-      "FizzBuzz"
-    when [true, false]
-      "Fizz"
-    when [false, true]
-      "Buzz"
-    else
-      n
+fizz_buzz =
+    (1..100).map do |i|
+        case
+        when i % 15 == 0 then "FizzBuzz"
+        when i % 3 == 0 then "Fizz"
+        when i % 5 == 0 then "Buzz"
+        else i
+        end
     end
-  end
-puts fizzbuzz
+puts fizz_buzz
