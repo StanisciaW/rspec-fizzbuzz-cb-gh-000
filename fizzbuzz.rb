@@ -1,53 +1,43 @@
 # Don't forget! This file needs to be 'required' in its spec file
 # See README.md for instructions on how to do this
-def fizz_buzz_1(max)
-  arr = []
-  (1..max).each do |n|
-    if ((n % 3 == 0) && (n % 5 == 0))
-      arr << "FizzBuzz"
-    elsif (n % 3 == 0)
-      arr << "Fizz"
-    elsif (n % 5 == 0)
-      arr << "Buzz"
-    else
-      arr << n
+describe 'FizzBuzz' do
+  context 'knows that a number is divisible by' do
+    it '3' do
+      expect(is_divisible_by_three?(3)).to be_true
+    end
+    it '5' do
+      expect(is_divisible_by_five?(5)).to be_true
+    end
+    it '15' do
+      expect(is_divisible_by_fifteen?(15)).to be_true
     end
   end
-  return arr
-end
 
-def fizz_buzz_2(max)
-  arr = []
-  (1..max).each do |n|
-    if (n % 3 == 0)
-      if (n % 5 == 0)
-        arr << "FizzBuzz"
-      else
-        arr << "Fizz"
-      end
-    elsif (n % 5 == 0)
-      arr << "Buzz"
-    else
-      arr << n
-    end
-  end
-  return arr
-end
 
-def fizz_buzz_3(max)
-  arr = []
-  (1..max).each do |n|
-    text = ""
-    if (n % 3 == 0)
-      text << "Fizz"
+  context 'knows that a number is not divisible by' do
+    it '3' do
+      expect(is_divisible_by_three?(1)).not_to be_true
     end
-    if (n % 5 == 0)
-      text << "Buzz"
+    it '5' do
+      expect(is_divisible_by_five?(1)).not_to be_true
     end
-    if !((n % 3 == 0) || (n % 5 == 0))
-      text = n
+    it '15' do
+      expect(is_divisible_by_fifteen?(1)).not_to be_true
     end
-    arr << text
   end
-  return arr
+
+  context 'while playing the game it returns' do
+    it 'the number' do
+      expect(fizzbuzz(1)).to eq 1
+    end
+    it 'Fizz' do
+      expect(fizzbuzz(3)).to eq "Fizz"
+    end
+    it 'Buzz' do
+      expect(fizzbuzz(5)).to eq "Buzz"
+    end
+    it "FizzBuzz" do
+      expect(fizzbuzz(15)).to eq "FizzBuzz"
+    end
+  end
 end
