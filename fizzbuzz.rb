@@ -1,38 +1,38 @@
 # Don't forget! This file needs to be 'required' in its spec file
 # See README.md for instructions on how to do this
-describe "fizzbuzz" do
-  it 'returns "Fizz" when the number is divisible by 3' do
-fizz_3 = fizzbuzz(3)
+describe FizzBuzz do
 
-expect(fizz_3).to eq("Fizz")
-  end
-  it 'returns "Buzz" when the number is divisible by 5' do
-fizz_5 = fizzbuzz(5)
-
-expect(fizz_5).to eq("Buzz")
-  end
- it 'returns "FizzBuzz" when the number is divisible by 3 and 5' do
-fizz_15 = fizzbuzz(15)
-
-expect(fizz_15).to eq("FizzBuzz")
-  end
-  it 'returns nil when the number is not divisible by 3 or 5' do
-fizz_4 = fizzbuzz(4)
-
-    expect(fizz_4).to eq(nil)
-  end
-end
-def fizzbuzz(int)
-  if int % 3 == 0 && int % 5 == 0
-   return "FizzBuzz"
+  describe "number is divisible" do
+    it "divisible by" do
+       divisible_by?(15,3).must_equal true
+    end
+    it "divisible by 3" do
+       divisible_by_3?(15).must_equal true
+    end
+    it "divisible by 5" do
+       divisible_by_5?(15).must_equal true
+    end
   end
 
-  if int % 5 == 0
-   return "Buzz"
-  end
+  describe "number is fizzbuzz" do
+    before do
+      @result = fizzbuzz
+    end
 
-  if int % 3 == 0
-   return "Fizz"
-  end
+    it "returns 'Fizz' for multiples of 3" do
+      @result[3-1].must_equal "Fizz"
+    end
 
+    it "returns 'Buzz' for multiples of 5" do
+      @result[5-1].must_equal "Buzz"
+    end
+
+    it "returns 'FizzBuzz' for multiples of 3 and 5" do
+      @result[15-1].must_equal "FizzBuzz"
+    end
+
+    it "returns the passed number if not a multiple of 3 or 5" do
+      @result[1-1].must_equal 1
+    end
+  end
 end
