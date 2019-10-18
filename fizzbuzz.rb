@@ -1,31 +1,26 @@
 # Don't forget! This file needs to be 'required' in its spec file
 # See README.md for instructions on how to do this
-class FizzBuzz
-  def perform
-    iterate_to(100) do |num,out|
-      out += "Fizz" if num.divisable_by?(3)
-      out += "Buzz" if num.divisable_by?(5)
-      out || num
-    end
-  end
+require_relative './spec_helper.rb'
 
-  def iterate_to(max)
-    (1..max).each do |num|
-      puts yield num,nil
-    end
-  end
-end
+describe "fizzbuzz" do
+  it 'returns "Fizz" when the number is divisible by 3' do
+    fizz_3 = fizzbuzz(3)
 
-class Fixnum
-  def divisable_by?(num)
-    self % num == 0
+    expect(fizz_3).to eq("Fizz")
   end
-end
+  it 'returns "Buzz" when the number is divisible by 5' do
+    fizz_5 = fizzbuzz(5)
 
-class NilClass
-  def +(other)
-    other
+    expect(fizz_5).to eq("Buzz")
+  end
+  it 'returns "FizzBuzz" when the number is divisible by 3 and 5' do
+    fizz_15 = fizzbuzz(15)
+
+    expect(fizz_15).to eq("FizzBuzz")
+  end
+  it 'returns nil when the number is not divisible by 3 or 5' do
+    fizz_4 = fizzbuzz(4)
+
+    expect(fizz_4).to eq(nil)
   end
 end
-
-FizzBuzz.new.perform
