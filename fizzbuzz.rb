@@ -1,17 +1,15 @@
 # Don't forget! This file needs to be 'required' in its spec file
 # See README.md for instructions on how to do this
-def fizzbuzz(n)
-  (1..n).each do |i|
-    if i % 3 == 0 && i % 5 == 0
-      puts 'fizzbuzz'
-    elsif i % 3 == 0
-      puts 'fizz'
-    elsif i % 5 == 0
-      puts 'buzz'
+def fizzbuzz(last_number)
+  1.upto(last_number).each do |x|              
+    if (x % 3 == 0) && (x % 5 == 0)
+      puts " Fizzbuzz"
+    elsif x % 3 == 0
+      puts " Fizz"
+    elsif x % 5 == 0
+      puts " Buzz"
     else
-      puts i
+      puts x
     end
   end
 end
-
-fizzbuzz(100)
